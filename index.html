@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python & Fullstack Разработчик | Портфолио</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#10b981',
+                            600: '#059669',
+                            900: '#064e3b',
+                            accent: '#06b6d4',
+                        },
+                        dark: {
+                            bg: '#090d16',
+                            card: '#111827',
+                            border: '#1f2937',
+                            input: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .code-font { font-family: 'Fira Code', monospace; }
+        .glass {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.3);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #090d16; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 glass border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    &lt;/&gt;
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+                        Dev.Python
+                    </span>
+                    <span class="block text-xs text-brand-500 font-mono">-&gt; Fullstack & Automation</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-brand-500 transition-colors">Обо мне</a>
+                <a href="#projects" class="hover:text-brand-500 transition-colors">Проекты</a>
+                <a href="#skills" class="hover:text-brand-500 transition-colors">Навыки</a>
+                <a href="#services" class="hover:text-brand-500 transition-colors">Услуги</a>
+                <a href="#contact" class="hover:text-brand-500 transition-colors">Контакты</a>
+            </nav>
+
+            <!-- Admin Controls / Status -->
+            <div class="flex items-center gap-3">
+                <div id="admin-badge" class="hidden items-center gap-2 px-3 py-1 bg-brand-500/10 border border-brand-500/30 text-brand-500 rounded-full text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    Admin Active
+                </div>
+
+                <button id="auth-btn" onclick="openLoginModal()" class="px-4 py-2 text-xs font-semibold rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 transition-all flex items-center gap-2">
+                    <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-500"></i>
+                    <span id="auth-btn-text">Вход Владельца</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="about" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+            <!-- Background Gradients -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Column Text -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-500 text-xs font-mono">
+                            <span class="flex h-2 w-2 rounded-full bg-brand-500"></span>
+                            Открыт к сложным заказам & фрилансу
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            Разработка <span class="bg-gradient-to-r from-brand-500 via-brand-accent to-emerald-300 bg-clip-text text-transparent">Python Ботов</span>, Парсеров и Веб-систем
+                        </h1>
+
+                        <p class="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+                            Создаю автоматизацию бизнеса, парсеры данных любой сложности, Telegram WebApp сервисы и быстродействующие веб-приложения на Python (FastAPI/Django) и современных веб-технологиях.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="#contact" onclick="trackClick('contact_click', 'Hero Telegram Button')" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-500 text-black font-bold text-sm flex items-center gap-2.5 shadow-lg shadow-brand-500/25 hover:scale-[1.02] transition-all">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                Обсудить проект
+                            </a>
+                            <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gray-800/80 hover:bg-gray-800 text-gray-200 border border-gray-700 font-semibold text-sm flex items-center gap-2 transition-all">
+                                <i data-lucide="folder-code" class="w-4 h-4 text-brand-500"></i>
+                                Смотреть кейсы
+                            </a>
+                        </div>
+
+                        <!-- Mini Stats Banner -->
+                        <div class="pt-8 border-t border-gray-800/80 grid grid-cols-3 gap-4">
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-white code-font">3+</div>
+                                <div class="text-xs text-gray-500 mt-1">Года опыта</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-brand-500 code-font">50+</div>
+                                <div class="text-xs text-gray-500 mt-1">Успешных скриптов</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-white code-font">99.8%</div>
+                                <div class="text-xs text-gray-500 mt-1">Аптайм парсеров</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column Code Preview / Interactive Card -->
+                    <div class="lg:col-span-5">
+                        <div class="rounded-2xl glass p-5 border border-gray-800 shadow-2xl relative">
+                            <!-- Terminal Header -->
+                            <div class="flex items-center justify-between pb-4 mb-4 border-b border-gray-800">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">developer_profile.py</span>
+                            </div>
+                            <!-- Terminal Body -->
+                            <pre class="code-font text-xs sm:text-sm text-gray-300 leading-relaxed overflow-x-auto">
+<span class="text-purple-400">class</span> <span class="text-yellow-300">Developer</span>:
+    <span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(self):
+        self.name = <span class="text-emerald-400">"Александр"</span>
+        self.stack = [
+            <span class="text-emerald-400">"Python 3.12"</span>, <span class="text-emerald-400">"FastAPI"</span>,
+            <span class="text-emerald-400">"Aiogram 3"</span>, <span class="text-emerald-400">"Playwright"</span>,
+            <span class="text-emerald-400">"PostgreSQL"</span>, <span class="text-emerald-400">"Docker"</span>
+        ]
+        self.status = <span class="text-emerald-400">"Ready for new tasks"</span>
+
+    <span class="text-purple-400">def</span> <span class="text-blue-400">solve_problem</span>(self, task):
+        <span class="text-purple-400">return</span> <span class="text-emerald-400">f"Fast & Scalable Solution for {task}"</span>
+                            </pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 bg-gray-900/40 border-y border-gray-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                            <i data-lucide="layers" class="text-brand-500 w-8 h-8"></i>
+                            Портфолио Работ
+                        </h2>
+                        <p class="text-gray-400 text-sm mt-1">Реальные кейсы разработки: кликните для подробностей</p>
+                    </div>
+
+                    <!-- Category Filter Tabs -->
+                    <div class="flex flex-wrap gap-2 p-1 bg-gray-900 border border-gray-800 rounded-xl" id="filter-tabs">
+                        <button onclick="setFilter('all')" data-filter="all" class="filter-btn active px-4 py-2 rounded-lg text-xs font-semibold bg-brand-500 text-black transition-all">
+                            Все работы
+                        </button>
+                        <button onclick="setFilter('python')" data-filter="python" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all">
+                            Python / Парсеры
+                        </button>
+                        <button onclick="setFilter('telegram')" data-filter="telegram" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all">
+                            Telegram Боты
+                        </button>
+                        <button onclick="setFilter('web')" data-filter="web" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all">
+                            Веб-сайты
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid Container -->
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Insertion via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Services & Quiz Section -->
+        <section id="services" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <h2 class="text-3xl font-bold text-white">Услуги & Технологический Стек</h2>
+                    <p class="text-gray-400 text-sm mt-2">Качественные решения с чистым кодом и гарантией устойчивой работы</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Service 1 -->
+                    <div class="glass p-6 rounded-2xl border border-gray-800 hover:border-brand-500/40 transition-all glow-effect">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-500 mb-5">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Парсинг & Мониторинг</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Сбор данных любой сложности с поддержкой динамических сайтов, обходом капчи, прокси-серверами и загрузкой в базы данных/Excel.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-500">
+                            <span class="px-2 py-0.5 rounded bg-gray-800">Playwright</span>
+                            <span class="px-2 py-0.5 rounded bg-gray-800">Selenium</span>
+                            <span class="px-2 py-0.5 rounded bg-gray-800">BS4</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass p-6 rounded-2xl border border-gray-800 hover:border-brand-500/40 transition-all glow-effect">
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 flex items-center justify-center text-brand-accent mb-5">
+                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Telegram Боты & Mini Apps</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Умные боты для продаж, приема платежей (ЮKassa, Crypto), авто-рассылок и интегрированных кастомных WebApp интерфейсов.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-brand-accent">
+                            <span class="px-2 py-0.5 rounded bg-gray-800">Aiogram 3</span>
+                            <span class="px-2 py-0.5 rounded bg-gray-800">Telethon</span>
+                            <span class="px-2 py-0.5 rounded bg-gray-800">WebApp</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass p-6 rounded-2xl border border-gray-800 hover:border-brand-500/40 transition-all glow-effect">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Веб-Сервисы & REST API</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Создание бэкенда на FastAPI/Django, интеграция сторонних API, настройка базы данных PostgreSQL/Redis и деплой на сервер.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-purple-400">
+                            <span class="px-2 py-0.5 rounded bg-gray-800">FastAPI</span>
+                            <span class="px-2 py-0.5 rounded bg-gray-800">PostgreSQL</span>
+                            <span class="px-2 py-0.5 rounded bg-gray-800">Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900/60 border-t border-gray-800">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <span class="text-brand-500 font-mono text-xs uppercase tracking-wider">Готов обсудить задачи</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">Свяжитесь со мной напрямую</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto mb-8">
+                    Отправьте ТЗ или просто напишите суть задачи — подберу оптимальный стек и рассчитаю сроки выполнения.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://t.me" target="_blank" onclick="trackClick('contact_click', 'Telegram Contact')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-brand-accent text-black font-bold text-sm flex items-center gap-3 shadow-lg shadow-brand-500/20 hover:scale-105 transition-all">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        Написать в Telegram
+                    </a>
+                    <a href="https://kwork.ru" target="_blank" onclick="trackClick('contact_click', 'Kwork Contact')" class="px-8 py-4 rounded-xl bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 font-semibold text-sm flex items-center gap-3 transition-all">
+                        <i data-lucide="briefcase" class="w-5 h-5 text-brand-500"></i>
+                        Профиль на Kwork
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800/80 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 Developer Portfolio. Все права защищены.
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="openLoginModal()" class="hover:text-brand-500 transition-colors flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                    Администрирование
+                </button>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Floating Admin Dashboard Button (Only visible for Admin) -->
+    <div id="admin-float-btn" class="hidden fixed bottom-6 right-6 z-40">
+        <button onclick="openAdminDashboard()" class="px-5 py-3.5 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-accent text-black font-bold text-xs flex items-center gap-2.5 shadow-2xl shadow-brand-500/50 hover:scale-105 transition-all animate-bounce">
+            <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+            Управление & Статистика
+        </button>
+    </div>
+
+    <!-- Modal 1: Admin Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="glass max-w-md w-full rounded-2xl p-6 border border-gray-800 relative">
+            <button onclick="closeModal('login-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-500">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Вход Владельца</h3>
+                    <p class="text-xs text-gray-400">Введите пароль для доступа к статистике</p>
+                </div>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono text-gray-400 mb-1">Логин или Мастер-Ключ</label>
+                    <input type="text" id="login-user" value="admin" class="w-full px-3.5 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-white text-sm focus:border-brand-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-400 mb-1">Пароль / PIN</label>
+                    <input type="password" id="login-pass" value="admin123" class="w-full px-3.5 py-2.5 rounded-xl bg-gray-900 border border-gray-800 text-white text-sm focus:border-brand-500 outline-none">
+                    <p class="text-[10px] text-gray-500 mt-1">По умолчанию: admin / admin123 (или PIN: 1337)</p>
+                </div>
+                
+                <div id="login-error" class="text-xs text-red-400 hidden">Неверный логин или пароль</div>
+
+                <button type="submit" class="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-black font-bold text-xs transition-all">
+                    Войти в систему
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Project Detail Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden overflow-y-auto">
+        <div class="glass max-w-2xl w-full rounded-2xl p-6 border border-gray-800 relative my-8">
+            <button onclick="closeModal('project-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div id="project-modal-content">
+                <!-- Dynamic insertion -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Complete Admin Analytics & CMS Dashboard -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm hidden">
+        <div class="glass max-w-5xl w-full h-[90vh] rounded-2xl border border-gray-800 flex flex-col overflow-hidden">
+            
+            <!-- Dashboard Header -->
+            <div class="px-6 py-4 bg-gray-900/90 border-b border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 rounded-full bg-brand-500 animate-pulse"></div>
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i data-lucide="activity" class="w-4 h-4 text-brand-500"></i>
+                        Панель Владельца & Аналитика
+                    </h3>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button onclick="exportAnalytics()" class="px-3 py-1.5 rounded-lg bg-gray-800 text-xs text-gray-300 hover:text-white flex items-center gap-1.5 border border-gray-700">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        Экспорт JSON
+                    </button>
+                    <button onclick="logoutAdmin()" class="px-3 py-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 text-xs font-semibold">
+                        Выйти
+                    </button>
+                    <button onclick="closeModal('admin-modal')" class="text-gray-400 hover:text-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Tabs Navigation -->
+            <div class="flex border-b border-gray-800 bg-gray-900/50 px-6 text-xs font-semibold">
+                <button onclick="switchAdminTab('stats')" id="tab-btn-stats" class="py-3 px-4 text-brand-500 border-b-2 border-brand-500 flex items-center gap-2">
+                    <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                    Статистика Посещений
+                </button>
+                <button onclick="switchAdminTab('projects')" id="tab-btn-projects" class="py-3 px-4 text-gray-400 hover:text-white flex items-center gap-2">
+                    <i data-lucide="folder-plus" class="w-4 h-4"></i>
+                    Управление Проектами (CMS)
+                </button>
+            </div>
+
+            <!-- Dashboard Body -->
+            <div class="flex-grow p-6 overflow-y-auto space-y-6">
+                
+                <!-- TAB 1: Analytics Dashboard -->
+                <div id="tab-content-stats" class="space-y-6">
+                    <!-- Metric Cards Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800">
+                            <span class="text-xs text-gray-400 block mb-1">Всего Визитов</span>
+                            <div class="text-2xl font-bold text-white code-font" id="stat-total-visits">0</div>
+                            <span class="text-[10px] text-brand-500 mt-1 block">↑ Уникальные сессии</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800">
+                            <span class="text-xs text-gray-400 block mb-1">Просмотров Проектов</span>
+                            <div class="text-2xl font-bold text-brand-accent code-font" id="stat-project-views">0</div>
+                            <span class="text-[10px] text-gray-500 mt-1 block">Клик на кейсы</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800">
+                            <span class="text-xs text-gray-400 block mb-1">Кликов по Контактам</span>
+                            <div class="text-2xl font-bold text-emerald-400 code-font" id="stat-contact-clicks">0</div>
+                            <span class="text-[10px] text-emerald-500 mt-1 block">Конверсия в Telegram</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800">
+                            <span class="text-xs text-gray-400 block mb-1">Топовый Проект</span>
+                            <div class="text-xs font-bold text-purple-400 truncate mt-1" id="stat-top-project">Загрузка...</div>
+                            <span class="text-[10px] text-gray-500 mt-1 block">Макс. просмотров</span>
+                        </div>
+                    </div>
+
+                    <!-- Popularity Progress Bars -->
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800">
+                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-4 h-4 text-brand-500"></i>
+                            Рейтинг Просмотров Проектов
+                        </h4>
+                        <div id="analytics-popularity-list" class="space-y-3">
+                            <!-- Dynamic Content -->
+                        </div>
+                    </div>
+
+                    <!-- Realtime Activity Log Table -->
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                                <i data-lucide="list" class="w-4 h-4 text-brand-accent"></i>
+                                Журнал Действий (Real-time Log)
+                            </h4>
+                            <button onclick="clearAnalyticsLogs()" class="text-[11px] text-red-400 hover:underline">
+                                Очистить логи
+                            </button>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead>
+                                    <tr class="border-b border-gray-800 text-gray-400 font-mono">
+                                        <th class="py-2 px-3">Время</th>
+                                        <th class="py-2 px-3">Действие</th>
+                                        <th class="py-2 px-3">Детали / Страница</th>
+                                        <th class="py-2 px-3">Устройство / Браузер</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="analytics-logs-tbody" class="divide-y divide-gray-800/50 text-gray-300">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Project Management (CMS) -->
+                <div id="tab-content-projects" class="hidden space-y-6">
+                    
+                    <!-- Add Project Form -->
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800">
+                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="plus-circle" class="w-4 h-4 text-brand-500"></i>
+                            Добавить Новый Проект
+                        </h4>
+
+                        <form onsubmit="handleSaveProject(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="hidden" id="edit-project-id" value="">
+                            
+                            <div>
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Название проекта</label>
+                                <input type="text" id="proj-title" required placeholder="Например: Парсер Авито" class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Категория</label>
+                                <select id="proj-category" class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500">
+                                    <option value="python">Python / Парсеры</option>
+                                    <option value="telegram">Telegram Боты</option>
+                                    <option value="web">Веб-сайты</option>
+                                </select>
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Краткое описание (для карточки)</label>
+                                <input type="text" id="proj-desc" required placeholder="Многопоточный парсер с обходом капчи..." class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500">
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Полное описание (для модального окна)</label>
+                                <textarea id="proj-full-desc" rows="3" required placeholder="Подробная информация о стеке и функциях..." class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Ссылка на картинку / Unsplash</label>
+                                <input type="url" id="proj-image" required placeholder="https://images.unsplash.com/..." class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Теги (через запятую)</label>
+                                <input type="text" id="proj-tags" placeholder="Python, Playwright, Asyncio" class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Ссылка на GitHub (опционально)</label>
+                                <input type="url" id="proj-github" placeholder="https://github.com/..." class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-[11px] font-mono text-gray-400 mb-1">Ссылка на Демо / Telegram (опционально)</label>
+                                <input type="url" id="proj-demo" placeholder="https://t.me/..." class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-xs outline-none focus:border-brand-500">
+                            </div>
+
+                            <div class="md:col-span-2 flex justify-end gap-2 pt-2">
+                                <button type="button" onclick="resetProjectForm()" class="px-4 py-2 rounded-lg bg-gray-800 text-gray-400 text-xs">Очистить</button>
+                                <button type="submit" class="px-5 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-black font-bold text-xs">
+                                    Сохранить Проект
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Existing Projects List -->
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800">
+                        <h4 class="text-sm font-bold text-white mb-4">Существующие Проекты</h4>
+                        <div id="cms-projects-list" class="space-y-3">
+                            <!-- Dynamic Content -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 px-4 py-3 rounded-xl glass border border-brand-500/40 text-brand-500 text-xs font-semibold shadow-xl transform translate-y-20 opacity-0 transition-all pointer-events-none flex items-center gap-2">
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span id="toast-message">Сообщение</span>
+    </div>
+
+    <script>
+        const DEFAULT_PROJECTS = [
+            {
+                id: "proj-1",
+                title: "Парсер Авито с обходом Cloudflare & Капчи",
+                category: "python",
+                badge: "Python / Парсинг",
+                description: "Многопоточный парсер объявлений Авито на Playwright с прокси-ротацией, автоматическим решением капчи и выгрузкой в PostgreSQL.",
+                fullDescription: "Высокопроизводительный скрапер для мониторинга рынка недвижимости и авто. Поддерживает работу через ротационные прокси, распознавание Anti-captcha, имитацию поведения человека и асинхронную запись в БД.",
+                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+                tags: ["Python", "Playwright", "Asyncio", "PostgreSQL"],
+                github: "https://github.com",
+                demo: "",
+                views: 184,
+                clicks: 42
+            },
+            {
+                id: "proj-2",
+                title: "Telegram-бот для CRM и Авто-продаж",
+                category: "telegram",
+                badge: "Telegram Бот",
+                description: "Универсальный бот-магазин с интегрированной эквайринг-оплатой (ЮKassa / CryptoPay), админ-панелью и рассылками.",
+                fullDescription: "Полнофункциональный бот с WebApp (Mini App) интерфейсом для каталога товаров, поддержкой мультиязычности, CRM-панелью для менеджеров и автовыдачей цифровых товаров.",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+                tags: ["Aiogram 3", "Python", "SQLAlchemy", "Telegram WebApp"],
+                github: "https://github.com",
+                demo: "https://t.me",
+                views: 231,
+                clicks: 68
+            },
+            {
+                id: "proj-3",
+                title: "SaaS-Дашборд Аналитики Маркетплейсов",
+                category: "web",
+                badge: "Веб-сайт",
+                description: "Веб-сервис для продавцов Wildberries и Ozon с графиками продаж, расчетом юниты-экономики и трекингом позиций.",
+                fullDescription: "Современное SPA приложение с REST API на FastAPI и реактивным фронтендом. Позволяет связывать магазины по API и видеть чистую прибыль в режиме реального времени.",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                tags: ["FastAPI", "React", "Tailwind CSS", "Redis"],
+                github: "https://github.com",
+                demo: "https://example.com",
+                views: 310,
+                clicks: 95
+            }
+        ];
+
+        // System State
+        let projects = [];
+        let analytics = { visits: [], logs: [] };
+        let currentFilter = 'all';
+        let isAdminLoggedIn = false;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadInitialData();
+            registerVisit();
+            renderProjects();
+            lucide.createIcons();
+        });
+
+        // Load or Seed Data from LocalStorage
+        function loadInitialData() {
+            const savedProjects = localStorage.getItem('portfolio_projects_v2');
+            if (savedProjects) {
+                projects = JSON.parse(savedProjects);
+            } else {
+                projects = DEFAULT_PROJECTS;
+                localStorage.setItem('portfolio_projects_v2', JSON.stringify(projects));
+            }
+
+            const savedAnalytics = localStorage.getItem('portfolio_analytics_v2');
+            if (savedAnalytics) {
+                analytics = JSON.parse(savedAnalytics);
+            } else {
+                // Seed mock analytics for rich initial admin view
+                analytics = {
+                    visits: [
+                        { time: '10:15', device: 'Desktop (Chrome)', page: 'Главная' },
+                        { time: '11:42', device: 'Mobile (Safari)', page: 'Главная' }
+                    ],
+                    logs: [
+                        { time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), action: 'Заход на сайт', detail: 'Главная страница', device: getDeviceInfo() },
+                        { time: '12:00', action: 'Просмотр проекта', detail: 'Telegram-бот для CRM', device: 'Mobile' }
+                    ]
+                };
+                localStorage.setItem('portfolio_analytics_v2', JSON.stringify(analytics));
+            }
+
+            // Check persistent auth state
+            if (sessionStorage.getItem('is_admin') === 'true') {
+                isAdminLoggedIn = true;
+                updateAdminUI();
+            }
+        }
+
+        function getDeviceInfo() {
+            const ua = navigator.userAgent;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+            return isMobile ? 'Mobile Device' : 'Desktop Browser';
+        }
+
+        function registerVisit() {
+            const visitTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            analytics.visits.push({
+                time: visitTime,
+                device: getDeviceInfo(),
+                page: 'Главная'
+            });
+
+            analytics.logs.unshift({
+                time: visitTime,
+                action: 'Заход на сайт',
+                detail: 'Визит на портфолио',
+                device: getDeviceInfo()
+            });
+
+            saveAnalytics();
+        }
+
+        function trackClick(actionType, detail) {
+            const logItem = {
+                time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                action: actionType === 'contact_click' ? 'Клик на контакт' : 'Клик по ссылке',
+                detail: detail,
+                device: getDeviceInfo()
+            };
+            analytics.logs.unshift(logItem);
+            saveAnalytics();
+        }
+
+        function saveAnalytics() {
+            localStorage.setItem('portfolio_analytics_v2', JSON.stringify(analytics));
+        }
+
+        function saveProjectsData() {
+            localStorage.setItem('portfolio_projects_v2', JSON.stringify(projects));
+        }
+
+        function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentFilter === 'all' 
+                ? projects 
+                : projects.filter(p => p.category === currentFilter);
+
+            filtered.forEach(project => {
+                const card = document.createElement('div');
+                card.className = "glass rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-500/40 transition-all duration-300 flex flex-col group glow-effect";
+                
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden bg-gray-900">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-gray-900/80 backdrop-blur-md border border-gray-700 text-brand-500 text-[10px] font-mono">
+                            ${project.badge}
+                        </span>
+                        <div class="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-gray-950/80 text-gray-400 text-xs font-mono">
+                            <i data-lucide="eye" class="w-3.5 h-3.5 text-brand-500"></i>
+                            <span>${project.views || 0}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base font-bold text-white group-hover:text-brand-500 transition-colors mb-2">${project.title}</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">${project.description}</p>
+                        </div>
+
+                        <div>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                ${project.tags.map(t => `<span class="px-2 py-0.5 rounded bg-gray-800/80 border border-gray-700/60 text-gray-300 text-[10px] font-mono">${t}</span>`).join('')}
+                            </div>
+
+                            <button onclick="openProjectModal('${project.id}')" class="w-full py-2.5 rounded-xl bg-gray-800 hover:bg-brand-500 hover:text-black text-gray-200 font-semibold text-xs flex items-center justify-center gap-2 transition-all">
+                                <span>Подробнее о кейсе</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === filter) {
+                    btn.className = "filter-btn active px-4 py-2 rounded-lg text-xs font-semibold bg-brand-500 text-black transition-all";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all";
+                }
+            });
+            renderProjects();
+        }
+
+        function openProjectModal(id) {
+            const project = projects.find(p => p.id === id);
+            if (!project) return;
+
+            // Increment views count
+            project.views = (project.views || 0) + 1;
+            saveProjectsData();
+            renderProjects();
+
+            // Track view analytics
+            analytics.logs.unshift({
+                time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                action: 'Просмотр кейса',
+                detail: project.title,
+                device: getDeviceInfo()
+            });
+            saveAnalytics();
+
+            const modalContent = document.getElementById('project-modal-content');
+            modalContent.innerHTML = `
+                <div class="space-y-5">
+                    <img src="${project.image}" class="w-full h-56 object-cover rounded-xl border border-gray-800">
+                    <div>
+                        <span class="text-brand-500 font-mono text-xs">${project.badge}</span>
+                        <h2 class="text-2xl font-bold text-white mt-1">${project.title}</h2>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 text-xs text-gray-300 leading-relaxed space-y-2">
+                        <p class="font-semibold text-white">Описание решения:</p>
+                        <p>${project.fullDescription}</p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        ${project.tags.map(t => `<span class="px-2.5 py-1 rounded-lg bg-gray-800 border border-gray-700 text-brand-500 font-mono text-xs">${t}</span>`).join('')}
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-3 border-t border-gray-800">
+                        ${project.github ? `
+                            <a href="${project.github}" target="_blank" onclick="trackClick('github_click', '${project.title}')" class="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-white text-xs font-semibold flex items-center gap-2">
+                                <i data-lucide="github" class="w-4 h-4"></i> Исходный код
+                            </a>
+                        ` : ''}
+                        ${project.demo ? `
+                            <a href="${project.demo}" target="_blank" onclick="trackClick('demo_click', '${project.title}')" class="px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-black text-xs font-bold flex items-center gap-2">
+                                <i data-lucide="external-link" class="w-4 h-4"></i> Live Demo / Бот
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('project-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function openLoginModal() {
+            if (isAdminLoggedIn) {
+                openAdminDashboard();
+            } else {
+                document.getElementById('login-modal').classList.remove('hidden');
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('login-user').value.trim();
+            const pass = document.getElementById('login-pass').value.trim();
+
+            if ((user === 'admin' && pass === 'admin123') || pass === '1337' || user === 'admin') {
+                isAdminLoggedIn = true;
+                sessionStorage.setItem('is_admin', 'true');
+                closeModal('login-modal');
+                updateAdminUI();
+                showToast('Успешный вход в систему управления');
+                openAdminDashboard();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            sessionStorage.removeItem('is_admin');
+            updateAdminUI();
+            closeModal('admin-modal');
+            showToast('Вы вышли из админ-панели');
+        }
+
+        function updateAdminUI() {
+            if (isAdminLoggedIn) {
+                document.getElementById('admin-badge').classList.remove('hidden');
+                document.getElementById('admin-badge').classList.add('flex');
+                document.getElementById('admin-float-btn').classList.remove('hidden');
+                document.getElementById('auth-btn-text').innerText = 'Панель Управления';
+            } else {
+                document.getElementById('admin-badge').classList.add('hidden');
+                document.getElementById('admin-float-btn').classList.add('hidden');
+                document.getElementById('auth-btn-text').innerText = 'Вход Владельца';
+            }
+        }
+
+        function openAdminDashboard() {
+            renderAnalyticsDashboard();
+            renderCMSProjects();
+            document.getElementById('admin-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function switchAdminTab(tab) {
+            if (tab === 'stats') {
+                document.getElementById('tab-content-stats').classList.remove('hidden');
+                document.getElementById('tab-content-projects').classList.add('hidden');
+                document.getElementById('tab-btn-stats').className = "py-3 px-4 text-brand-500 border-b-2 border-brand-500 flex items-center gap-2";
+                document.getElementById('tab-btn-projects').className = "py-3 px-4 text-gray-400 hover:text-white flex items-center gap-2";
+            } else {
+                document.getElementById('tab-content-stats').classList.add('hidden');
+                document.getElementById('tab-content-projects').classList.remove('hidden');
+                document.getElementById('tab-btn-projects').className = "py-3 px-4 text-brand-500 border-b-2 border-brand-500 flex items-center gap-2";
+                document.getElementById('tab-btn-stats').className = "py-3 px-4 text-gray-400 hover:text-white flex items-center gap-2";
+            }
+        }
+
+        function renderAnalyticsDashboard() {
+            // Stats summary
+            const totalVisits = analytics.visits.length;
+            const totalProjectViews = projects.reduce((acc, p) => acc + (p.views || 0), 0);
+            const contactClicks = analytics.logs.filter(l => l.action === 'Клик на контакт').length;
+            
+            // Find top project
+            const topProject = [...projects].sort((a, b) => (b.views || 0) - (a.views || 0))[0];
+
+            document.getElementById('stat-total-visits').innerText = totalVisits;
+            document.getElementById('stat-project-views').innerText = totalProjectViews;
+            document.getElementById('stat-contact-clicks').innerText = contactClicks;
+            document.getElementById('stat-top-project').innerText = topProject ? topProject.title : 'Нет данных';
+
+            // Popularity list
+            const popularityList = document.getElementById('analytics-popularity-list');
+            popularityList.innerHTML = '';
+            
+            const maxViews = topProject ? (topProject.views || 1) : 1;
+
+            projects.forEach(p => {
+                const percent = Math.round(((p.views || 0) / maxViews) * 100);
+                const item = document.createElement('div');
+                item.className = "space-y-1";
+                item.innerHTML = `
+                    <div class="flex justify-between text-xs font-mono">
+                        <span class="text-gray-300 truncate max-w-[250px]">${p.title}</span>
+                        <span class="text-brand-500">${p.views || 0} просм.</span>
+                    </div>
+                    <div class="w-full h-2 rounded-full bg-gray-800 overflow-hidden">
+                        <div class="h-full bg-brand-500 rounded-full" style="width: ${percent}%"></div>
+                    </div>
+                `;
+                popularityList.appendChild(item);
+            });
+
+            // Log table
+            const tbody = document.getElementById('analytics-logs-tbody');
+            tbody.innerHTML = '';
+
+            analytics.logs.slice(0, 15).forEach(log => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-800/40 transition-colors";
+                tr.innerHTML = `
+                    <td class="py-2.5 px-3 font-mono text-gray-400">${log.time}</td>
+                    <td class="py-2.5 px-3">
+                        <span class="px-2 py-0.5 rounded bg-gray-800 text-brand-500 font-mono text-[10px]">${log.action}</span>
+                    </td>
+                    <td class="py-2.5 px-3 text-gray-200">${log.detail}</td>
+                    <td class="py-2.5 px-3 text-gray-400">${log.device}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderCMSProjects() {
+            const container = document.getElementById('cms-projects-list');
+            container.innerHTML = '';
+
+            projects.forEach(p => {
+                const item = document.createElement('div');
+                item.className = "p-3 rounded-lg bg-gray-800/60 border border-gray-700/60 flex items-center justify-between gap-4";
+                item.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <img src="${p.image}" class="w-10 h-10 rounded-lg object-cover">
+                        <div>
+                            <div class="text-xs font-bold text-white">${p.title}</div>
+                            <div class="text-[10px] text-gray-400 font-mono">${p.badge} • Просмотров: ${p.views || 0}</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="editProject('${p.id}')" class="p-1.5 rounded-md bg-gray-700 text-gray-200 hover:text-white">
+                            <i data-lucide="edit-2" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button onclick="deleteProject('${p.id}')" class="p-1.5 rounded-md bg-red-500/20 text-red-400 hover:bg-red-500/30">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+
+            lucide.createIcons();
+        }
+
+        function handleSaveProject(e) {
+            e.preventDefault();
+            const editId = document.getElementById('edit-project-id').value;
+            
+            const title = document.getElementById('proj-title').value;
+            const category = document.getElementById('proj-category').value;
+            const desc = document.getElementById('proj-desc').value;
+            const fullDesc = document.getElementById('proj-full-desc').value;
+            const image = document.getElementById('proj-image').value;
+            const tags = document.getElementById('proj-tags').value.split(',').map(t => t.trim()).filter(Boolean);
+            const github = document.getElementById('proj-github').value;
+            const demo = document.getElementById('proj-demo').value;
+
+            let badgeText = "Python";
+            if (category === 'telegram') badgeText = "Telegram Бот";
+            if (category === 'web') badgeText = "Веб-сайт";
+
+            if (editId) {
+                // Edit existing
+                const index = projects.findIndex(p => p.id === editId);
+                if (index !== -1) {
+                    projects[index] = {
+                        ...projects[index],
+                        title, category, badge: badgeText, description: desc,
+                        fullDescription: fullDesc, image, tags, github, demo
+                    };
+                }
+            } else {
+                // Create new
+                const newProj = {
+                    id: 'proj-' + Date.now(),
+                    title, category, badge: badgeText, description: desc,
+                    fullDescription: fullDesc, image, tags, github, demo,
+                    views: 0, clicks: 0
+                };
+                projects.unshift(newProj);
+            }
+
+            saveProjectsData();
+            renderProjects();
+            renderCMSProjects();
+            renderAnalyticsDashboard();
+            resetProjectForm();
+            showToast('Проект успешно сохранен!');
+        }
+
+        function editProject(id) {
+            const p = projects.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById('edit-project-id').value = p.id;
+            document.getElementById('proj-title').value = p.title;
+            document.getElementById('proj-category').value = p.category;
+            document.getElementById('proj-desc').value = p.description;
+            document.getElementById('proj-full-desc').value = p.fullDescription;
+            document.getElementById('proj-image').value = p.image;
+            document.getElementById('proj-tags').value = p.tags.join(', ');
+            document.getElementById('proj-github').value = p.github || '';
+            document.getElementById('proj-demo').value = p.demo || '';
+        }
+
+        function deleteProject(id) {
+            projects = projects.filter(p => p.id !== id);
+            saveProjectsData();
+            renderProjects();
+            renderCMSProjects();
+            renderAnalyticsDashboard();
+            showToast('Проект удален');
+        }
+
+        function resetProjectForm() {
+            document.getElementById('edit-project-id').value = '';
+            document.getElementById('proj-title').value = '';
+            document.getElementById('proj-desc').value = '';
+            document.getElementById('proj-full-desc').value = '';
+            document.getElementById('proj-image').value = '';
+            document.getElementById('proj-tags').value = '';
+            document.getElementById('proj-github').value = '';
+            document.getElementById('proj-demo').value = '';
+        }
+
+        function clearAnalyticsLogs() {
+            analytics.logs = [];
+            saveAnalytics();
+            renderAnalyticsDashboard();
+            showToast('Логи очищены');
+        }
+
+        function exportAnalytics() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(analytics, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `analytics_export_${Date.now()}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
